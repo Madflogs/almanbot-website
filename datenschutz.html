@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutzerklärung - Almanbot</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --paper-color: #ffffff;
+            --accent-color: #2c3e50;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .akte {
+            background-color: var(--paper-color);
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+            border-left: 15px solid var(--accent-color);
+            position: relative;
+        }
+
+        h1 {
+            font-family: Arial, sans-serif;
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-family: Arial, sans-serif;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            background-color: #eee;
+            padding: 5px 10px;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        p, ul {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            text-decoration: none;
+            color: var(--accent-color);
+            font-weight: bold;
+            border: 1px solid var(--accent-color);
+            padding: 10px 20px;
+        }
+
+        .back-link:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* DSGVO Stempel */
+        .stamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 3px solid #27ae60;
+            color: #27ae60;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 5px 10px;
+            text-transform: uppercase;
+            transform: rotate(-10deg);
+            opacity: 0.8;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="akte">
+        <div class="stamp">DSGVO Konform</div>
+
+        <h1>Datenschutzerklärung</h1>
+        <p>Stand: 15.02.2025</p>
+
+        <h2>1. Allgemeine Hinweise</h2>
+        <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Die Nutzung unserer App ist in der Regel ohne Angabe personenbezogener Daten möglich.</p>
+
+        <h2>2. Verantwortliche Stelle</h2>
+        <p>
+            Jonas Karsubke<br>
+            Auf Anfrage<br>
+            68329 Mannheim<br>
+            E-Mail: almanbot.de
+        </p>
+
+        <h2>3. Datenerfassung in der App</h2>
+        
+        <p><strong>Lokale Speicherung:</strong></p>
+        <p>Alle von Ihnen erstellten Mängelanzeigen, Fotos und Texte werden primär lokal auf Ihrem Endgerät gespeichert (Apple SwiftData). Wir haben keinen Zugriff auf diese Datenbank.</p>
+
+        <p><strong>Zugriffsrechte:</strong></p>
+        <ul>
+            <li><strong>Kamera:</strong> Wird nur verwendet, um Fotos von Mängeln aufzunehmen. Die Fotos werden lokal verarbeitet.</li>
+            <li><strong>Standort (GPS):</strong> Wird verwendet, um den Ort des Mangels automatisch in das Formular einzutragen. Die Daten werden nicht getrackt oder dauerhaft gespeichert, sondern nur für den Moment der Erstellung genutzt.</li>
+            <li><strong>Mikrofon:</strong> Wird verwendet, um Ihre Sprachbeschreibung mittels Apple SFSpeechRecognizer in Text umzuwandeln. Die Verarbeitung erfolgt lokal auf dem Gerät (On-Device).</li>
+        </ul>
+
+        <h2>4. Weitergabe an Dritte (OpenAI API)</h2>
+        <p>Um aus Ihren Stichworten einen formulierten Text ("Beamtendeutsch") zu generieren, nutzen wir die API von OpenAI (OpenAI, L.L.C., San Francisco, USA).</p>
+        <p>Hierbei werden folgende Daten übermittelt:</p>
+        <ul>
+            <li>Der von Ihnen gesprochene oder getippte Text.</li>
+            <li>Der Standort (als Adresse/Text), um den Kontext zu verstehen.</li>
+        </ul>
+        <p>Wir übermitteln keine personenbezogenen Daten (wie Ihren Namen), sofern Sie diesen nicht selbst in den Beschreibungstext diktieren. OpenAI verwendet die über die API gesendeten Daten laut eigenen Angaben nicht zum Trainieren ihrer Modelle.</p>
+
+        <h2>5. E-Mail-Versand</h2>
+        <p>Die App selbst versendet keine E-Mails im Hintergrund. Sie generiert lediglich einen Entwurf, der an die auf Ihrem Gerät installierte Mail-App (z.B. Apple Mail) übergeben wird. Sie haben vor dem Absenden jederzeit die volle Kontrolle über den Empfänger und den Inhalt. Der Versand erfolgt über Ihren eigenen E-Mail-Account.</p>
+
+        <h2>6. Ihre Rechte</h2>
+        <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.</p>
+
+        <a href="index.html" class="back-link">← Zurück zur Hauptseite</a>
+    </div>
+
+</body>
+</html>
