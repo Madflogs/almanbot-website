@@ -3,43 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SuperApp - Die beste App für XYZ</title>
+    <title>Almanbot - Der digitale Mängelmelder</title>
     <style>
-        :root { --primary: #007AFF; --bg: #f5f5f7; --text: #1d1d1f; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-               background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; text-align: center; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .subtitle { font-size: 1.2rem; color: #86868b; margin-bottom: 30px; }
-        .app-icon { width: 120px; height: 120px; border-radius: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .btn { display: inline-block; background: var(--primary); color: white; padding: 12px 24px; 
-               border-radius: 20px; text-decoration: none; font-weight: 600; margin-top: 20px; transition: 0.2s; }
-        .btn:hover { opacity: 0.9; transform: scale(1.02); }
-        footer { margin-top: 60px; font-size: 0.8rem; color: #86868b; border-top: 1px solid #e5e5e5; padding-top: 20px; }
-        footer a { color: #86868b; text-decoration: none; margin: 0 10px; }
+        :root {
+            --bg-color: #f4f4f4; /* Behördengrau */
+            --paper-color: #ffffff;
+            --accent-color: #2c3e50; /* Dunkelblau (Bundesadler-Vibe) */
+            --stamp-color: #ba1e1e; /* Stempel-Rot */
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Schreibmaschinen-Look */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Der "Aktenordner" Container */
+        .akte {
+            background-color: var(--paper-color);
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+            border-left: 15px solid var(--accent-color); /* Der Ordnerrücken */
+            position: relative;
+        }
+
+        /* Locher-Effekt */
+        .akte::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background-color: var(--bg-color);
+            border-radius: 50%;
+            box-shadow: 0 -400px 0 var(--bg-color), 0 400px 0 var(--bg-color); /* Mehrere Löcher simulieren */
+        }
+
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* Der Stempel */
+        .stamp {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            border: 4px solid var(--stamp-color);
+            color: var(--stamp-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transform: rotate(-15deg);
+            opacity: 0;
+            animation: stampIn 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+            animation-delay: 0.5s;
+            mask-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png'); /* Grunge Effekt optional */
+            -webkit-mask-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png');
+        }
+
+        @keyframes stampIn {
+            0% { opacity: 0; transform: scale(3) rotate(-15deg); }
+            100% { opacity: 0.8; transform: scale(1) rotate(-15deg); }
+        }
+
+        .content-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #fafafa;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Der Download Button */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #1a252f;
+        }
+
+        /* Footer mit Rechtstexten */
+        footer {
+            margin-top: 50px;
+            border-top: 1px dashed #999;
+            padding-top: 20px;
+            font-size: 0.8rem;
+        }
+
+        .legal-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-color);
+        }
+
+        .legal-links a:hover {
+            border-bottom: 1px solid var(--text-color);
+        }
+
+        /* Mobile Anpassung */
+        @media (max-width: 600px) {
+            .akte { padding: 20px; border-left-width: 8px; }
+            .stamp { top: 10px; right: 10px; font-size: 1rem; }
+            .legal-links { flex-direction: column; gap: 10px; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://via.placeholder.com/120" alt="App Icon" class="app-icon">
-        
-        <h1>SuperApp</h1>
-        <p class="subtitle">Deine Lösung für das Problem XY. Einfach, schnell und sicher.</p>
-        
-        <div style="background: white; padding: 20px; border-radius: 12px; margin: 30px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-            <p>Hier kommt ein Screenshot deiner App hin.</p>
-        </div>
 
-        <a href="#" class="btn">Laden im App Store</a>
+    <div class="akte">
+        <div class="stamp">Im App Store<br>Zugelassen</div>
+
+        <header>
+            <h1>Almanbot</h1>
+            <div class="subtitle">Antrag auf digitale Mängelanzeige (Vers. 1.0)</div>
+        </header>
+
+        <main>
+            <section>
+                <p><strong>Betreff:</strong> Digitalisierung des deutschen Unmuts.</p>
+                
+                <p>Sehr geehrter Bürger,</p>
+                <p>hiermit wird Ihnen das Werkzeug an die Hand gegeben, Ordnungswidrigkeiten im öffentlichen Raum (z.B. Falschparker, Müllablagerungen) formgerecht und unter Einhaltung der DIN-Normen an die zuständigen Behörden zu übermitteln.</p>
+            </section>
+
+            <div class="content-box">
+                <strong>§ 1 Funktionsumfang:</strong>
+                <ul>
+                    <li>[x] Automatische Umwandlung von Wut in Beamtendeutsch.</li>
+                    <li>[x] Rechtssichere Ortung des Vergehens.</li>
+                    <li>[x] Passierschein A38 inklusive.</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="#" class="cta-button">App herunterladen (TestFlight)</a>
+                <p style="font-size: 0.7rem; margin-top: 10px;">*Mit dem Klick bestätigen Sie, dass Sie Ordnung lieben.</p>
+            </div>
+        </main>
 
         <footer>
-            <p>&copy; 2024 Dein Name / Firma</p>
-            <p>
-                <a href="mailto:support@deine-neue-domain.de">Support</a>
-                <a href="#">Impressum</a>
-                <a href="#">Datenschutz</a>
-            </p>
+            <p><strong>Anlagen (Rechtliches):</strong></p>
+            <ul class="legal-links">
+                <li><a href="impressum.html">Impressum nach § 5 TMG</a></li>
+                <li><a href="datenschutz.html">Datenschutzerklärung (DSGVO)</a></li>
+                <li><a href="mailto:support@almanbot.de">Beschwerdestelle (Support)</a></li>
+            </ul>
+            <p style="margin-top: 20px;">&copy; 2025 Almanbot Development Group. Alle Rechte vorbehalten. Formular C-17.</p>
         </footer>
     </div>
+
 </body>
 </html>
