@@ -15,6 +15,7 @@
             --text-main: #1c1c1e;
             --text-secondary: #636366;
             --border-radius: 8px;
+            --bmac-yellow: #FFDD00;
         }
 
         * { box-sizing: border-box; }
@@ -52,8 +53,19 @@
             letter-spacing: -1px;
             text-transform: uppercase;
         }
+        
+        .header-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
 
-        /* IPHONE MOCKUP CSS (Der Rahmen um die Bilder) */
+        .header-links a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* IPHONE MOCKUP CSS */
         .iphone-frame {
             position: relative;
             background-color: #1a1a1a;
@@ -61,9 +73,9 @@
             border: 10px solid #333;
             box-shadow: 0px 20px 40px rgba(0,0,0,0.2);
             overflow: hidden;
-            width: 280px; /* Breite eines Screenshots */
+            width: 280px;
             margin: 0 auto;
-            aspect-ratio: 9 / 19.5; /* iPhone Seitenverhältnis */
+            aspect-ratio: 9 / 19.5;
         }
 
         .iphone-frame img {
@@ -126,7 +138,7 @@
             transform: translateY(-2px);
         }
 
-        /* SHOWCASE SECTION (Die anderen 2 Bilder) */
+        /* SHOWCASE SECTION */
         .showcase {
             background: white;
             padding: 80px 40px;
@@ -145,7 +157,6 @@
 
         .step:last-child { margin-bottom: 0; }
         
-        /* Abwechselnde Reihenfolge für Text/Bild */
         .step:nth-child(even) { flex-direction: row-reverse; }
 
         .step-text { flex: 1; min-width: 300px; }
@@ -164,6 +175,53 @@
 
         h2 { font-size: 2rem; margin-top: 0; color: var(--primary-dark); }
         
+        /* SUPPORT / BUY ME A COFFEE SECTION */
+        .support-section {
+            background-color: var(--primary-dark);
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin-bottom: 80px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(20, 40, 80, 0.2);
+        }
+
+        .support-section h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .support-section p {
+            color: #d1d8e0;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-size: 1.1rem;
+        }
+
+        .bmac-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--bmac-yellow);
+            color: #000000;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 221, 0, 0.3);
+        }
+
+        .bmac-btn:hover {
+            background-color: #ffe633;
+            transform: translateY(-3px);
+            color: #000000;
+        }
+
+        .bmac-icon {
+            font-size: 1.5rem;
+            margin-right: 12px;
+        }
+
         /* FOOTER */
         footer {
             border-top: 1px solid #ccc;
@@ -191,6 +249,7 @@
             .step, .step:nth-child(even) { flex-direction: column; text-align: center; gap: 30px; }
             footer { flex-direction: column; text-align: center; }
             .footer-links a { margin: 0 10px; }
+            .header-links { font-size: 0.9rem; gap: 10px; }
         }
     </style>
 </head>
@@ -200,7 +259,10 @@
         
         <header>
             <div class="logo">§ ALMANBOT</div>
-            <a href="mailto:support@almanbot.de" style="color:var(--primary-dark); text-decoration:none; font-weight:bold;">Kontakt</a>
+            <div class="header-links">
+                <a href="https://buymeacoffee.com/jonaskarsubke" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);">☕ Kaffeekasse</a>
+                <a href="mailto:support@almanbot.de" style="color:var(--primary-dark);">Kontakt</a>
+            </div>
         </header>
 
         <section class="hero">
@@ -209,7 +271,7 @@
                 <p class="tagline">
                     Der digitale Mängelmelder für iOS. Verwandeln Sie Fotos und Sprache in amtliche E-Mails.
                 </p>
-                <a href="https://apps.apple.com/us/app/almanbot/id6759533881"class="btn"> Laden im App Store</a>
+                <a href="https://apps.apple.com/us/app/almanbot/id6759533881" class="btn"> Laden im App Store</a>
                 <p style="font-size: 0.8rem; margin-top: 15px; color: #888;">*Benötigt iOS 17.0 oder neuer.</p>
             </div>
             <div class="hero-image">
@@ -254,6 +316,14 @@
                 </div>
             </div>
 
+        </section>
+
+        <section class="support-section">
+            <h2>Dir gefällt der Almanbot?</h2>
+            <p>Ich entwickle diese App in meiner Freizeit, um dir den Behörden-Alltag etwas leichter zu machen. Wenn dir der Almanbot Zeit (und Nerven) gespart hat, freue ich mich riesig über eine kleine Unterstützung für die Server- und KI-Kosten!</p>
+            <a href="https://buymeacoffee.com/jonaskarsubke" target="_blank" rel="noopener noreferrer" class="bmac-btn">
+                <span class="bmac-icon">☕</span> Entwickler auf einen Kaffee einladen
+            </a>
         </section>
 
         <footer>
